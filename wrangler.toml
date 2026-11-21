@@ -1,0 +1,19 @@
+# One Worker per client. Copy this file, change name + vars, then set secrets:
+#   wrangler secret put TWILIO_AUTH_TOKEN
+#   wrangler secret put ANTHROPIC_API_KEY
+#   wrangler secret put API_KEY          (any long random string)
+name = "leads-acme-plumbing"
+main = "src/worker.js"
+compatibility_date = "2026-11-01"
+
+[vars]
+BUSINESS_NAME = "Acme Plumbing"
+TRADE = "plumbing"
+SERVICE_AREA = "Springfield and nearby towns"
+OWNER_PHONE = "+15550000001"        # where calls are forwarded and alerts go
+TWILIO_NUMBER = "+15550000002"      # the client's Twilio number (put on website/Google profile)
+TWILIO_ACCOUNT_SID = "ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+REVIEW_LINK = "https://g.page/r/REPLACE/review"
+RING_SECONDS = "20"
+MODEL = "claude-haiku-5-5"
+# MISSED_CALL_TEXT = "Custom text-back message (optional)"
