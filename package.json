@@ -1,0 +1,11 @@
+{
+  "name": "home-service-lead-automation",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
+  }
+}
