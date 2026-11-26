@@ -37,7 +37,7 @@ def hydrant(color, loc, rot_z=0.0, scale=1.5, bonnet_z=0.62):
             bsdf.inputs["Metallic"].default_value = 0.25; bsdf.inputs["Roughness"].default_value = 0.38
             paints.append((m, bsdf))
     return {"root": r, "parts": parts, "paints": paints, "color": color}
-def glow(h, frames, color=(1.0, 0.40, 0.04), peak=1.6):
+def glow(h, frames, color=(1.0, 0.40, 0.04), peak=1.0):
     """named object glows: its own paint colour lit up + orange fresnel rim, then fades (keeps the colour readable)."""
     base = COL[h["color"]]
     for m, bsdf in h["paints"]:
@@ -49,7 +49,12 @@ def glow(h, frames, color=(1.0, 0.40, 0.04), peak=1.6):
         rim = nt.nodes.new("ShaderNodeMath"); rim.operation = "MULTIPLY_ADD"; rim.inputs[1].default_value = 3.0; rim.inputs[2].default_value = 0.30
         nt.links.new(lw.outputs["Fresnel"], rim.inputs[0])
         st = nt.nodes.new("ShaderNodeMath"); st.operation = "MULTIPLY"; nt.links.new(rim.outputs[0], st.inputs[0]); st.inputs[1].default_value = 0.0
-        nt.links.new(st.outputs[0], em.inputs["Strength"])
+        gtn = next((n for n in nt.nodes if n.type == "MATH" and n.operation == "GREATER_THAN"), None)   # body: glow only where the bonnet paint is (else yellow body blows out to white)
+        if gtn is not None:
+            mk = nt.nodes.new("ShaderNodeMath"); mk.operation = "MULTIPLY"; nt.links.new(st.outputs[0], mk.inputs[0]); nt.links.new(gtn.outputs[0], mk.inputs[1])
+            nt.links.new(mk.outputs[0], em.inputs["Strength"])
+        else:
+            nt.links.new(st.outputs[0], em.inputs["Strength"])
         out = next(n for n in nt.nodes if n.type == "OUTPUT_MATERIAL"); surf = out.inputs["Surface"].links[0].from_socket
         ad = nt.nodes.new("ShaderNodeAddShader"); nt.links.new(surf, ad.inputs[0]); nt.links.new(em.outputs[0], ad.inputs[1]); nt.links.new(ad.outputs[0], out.inputs["Surface"])
         f0, f1, f2 = frames
