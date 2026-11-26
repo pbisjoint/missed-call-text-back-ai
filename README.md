@@ -1,1 +1,1 @@
-Hosting branch for YouTube Shorts uploads (video files only).
+Hosting + state branch for the YouTube Shorts channel. shorts/ = video files (public URLs for upload), state/ = published.json + idea_bank.json + analytics notes, pipeline/ = backup of the pipeline scripts.
