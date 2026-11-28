@@ -17,6 +17,17 @@
   "category": "strange true history",
   "video_id": null,
   "slot": "2026-11-27 12:30 America/New_York",
-  "status": "made; Windsor upload rate-limited 3x; user to upload manually"
+  "status": "published via Zernio at 2026-11-27 12:30 ET (post 6b09988490a0690d720347f0); user reports ~1k views",
+  "zernio_post_id": "6b09988490a0690d720347f0"
+ },
+ {
+  "date": "2026-11-28",
+  "slug": "manhole-covers-round",
+  "title": "Why Are Manhole Covers Round?",
+  "topic": "manhole covers round: square falls through diagonal, circle constant width, 300 lb",
+  "category": "everyday-objects",
+  "video_id": null,
+  "slot": "2026-11-28 12:30 America/New_York",
+  "status": "in production (render running)"
  }
 ]
