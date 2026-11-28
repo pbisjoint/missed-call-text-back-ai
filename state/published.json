@@ -35,11 +35,13 @@
  {
   "date": "2026-11-29",
   "slug": "airplane-window-hole",
-  "title": "(in production)",
+  "title": "Why Airplane Windows Have A Tiny Hole",
   "topic": "airplane window breather hole: middle pane, outer pane bears pressure, vents moisture",
   "category": "how-things-work",
   "video_id": null,
   "slot": "2026-11-29 12:30 America/New_York",
-  "status": "in production"
+  "status": "scheduled via Zernio for 2026-11-29 12:30 ET",
+  "file": "shorts/2026-11-29_airplane-window-hole.mp4",
+  "zernio_post_id": "6b0aa3b561a3d908c1622b02"
  }
 ]
